@@ -1,0 +1,14 @@
+datasource:
+  main:
+    driverClassName: org.postgresql.Driver
+    url: <<invalid>>
+    username: user
+    password: password
+  replica:
+    driverClassName: org.postgresql.Driver
+    url: <<invalid>>
+    username: user
+    password: password
+
+host:
+  viacep: http://localhost:8551

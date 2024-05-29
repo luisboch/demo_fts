@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: demo
+  profiles:
+    active: local,develop
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+springdoc:
+  api-docs:
+    enabled: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /demo
+datasource:
+  main:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: user
+    password: password
+  replica:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: user
+    password: password
+
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 2
+      waitDuration: 100
+      retryExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+      ignoreExceptions:
+
+  instances:
+    viaCepRetry:
+      baseConfig: default
+
+host:
+  viacep: ${ENV_VIACEP_URL:https://viacep.com.br}
