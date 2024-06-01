@@ -1,6 +1,6 @@
 # Project
 
-Demo project exploring integrations, resilience and cache features.
+Demo project exploring integrations, resilience, cache and database replication features.
 
 # How to run
 
